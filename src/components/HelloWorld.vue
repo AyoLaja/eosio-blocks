@@ -7,15 +7,14 @@
 </template>
 
 <script>
-import { Api, JsonRpc, RpcError } from 'eosjs';
-import { JsSignatureProvider } from 'eosjs/dist/eosjs-jssig';  
+import { JsonRpc } from 'eosjs';
 const fetch = require('node-fetch');   
+let options = {
 
-const defaultPrivateKey = "5JtUScZK2XEp3g9gh7F8bwtPTRAkASmNrrftmx4AxDKD5K4zDnr"; // bob
-const signatureProvider = new JsSignatureProvider([defaultPrivateKey]);  
+}
+const rpc = new JsonRpc('https://api.eosnewyork.io', fetch({ mode: 'no-cors'})); //http://127.0.0.1:8888 https://api.eosnewyork.io
 
-const rpc = new JsonRpc('https://api.eosnewyork.io', { fetch }); //http://127.0.0.1:8888
-const api = new Api({ rpc, signatureProvider, textDecoder: new TextDecoder(), textEncoder: new TextEncoder() });
+
 
 export default {
   name: 'HelloWorld',
@@ -25,9 +24,27 @@ export default {
     }
   },
   mounted() {
-    console.log(api)
-    this.getInfo()
-    this.getBlock()
+    // console.log(fetch)
+    // this.getInfo()
+    // this.getBlock()
+    var proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+    var url ='https://api.eosnewyork.io/v1/chain/get_block';
+    var headers = {
+      "Content-Type": "application/json"
+    }
+    var data = {
+      "block_num_or_id": '1'
+    }
+    fetch(proxyUrl + url, { method: 'POST', headers: headers, body: data })
+    .then(async (res) => {
+      let data = await res.json()
+      console.log(data)
+      return data
+    })
+    .then((json) => {
+      console.log(json);
+    })
+    .catch(error => console.log(error))
   },
   methods: {
     async getInfo() {
@@ -35,11 +52,9 @@ export default {
       console.log(result)
     },
     async getBlock() {
-      let result = await rpc.get_block(81424200)
+      console.log( await rpc.get_block(1))
+      let result = await rpc.get_block(1)
       console.log(result)
-    },
-    getBlock2() {
-      
     }
   }
 }
