@@ -1,12 +1,24 @@
 <template>
   <div id="app">
+    <block-modal v-if="globalState.modal.show"></block-modal>
     <router-view/>
   </div>
 </template>
 
 <script>
+import BlockModal from './components/BlockModal.vue'
+import { store } from './resources/store'
+
 export default {
-  name: 'App'
+  name: 'App',
+  data() {
+    return {
+      globalState: store.state
+    }
+  },
+  components: {
+    BlockModal
+  }
 }
 </script>
 
@@ -19,7 +31,8 @@ export default {
 
   #app {
     padding: 30px;
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    /* font-family: 'Avenir', Helvetica, Arial, sans-serif; */
+    font-family: 'Roboto Mono', monospace;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
