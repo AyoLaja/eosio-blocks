@@ -29,6 +29,10 @@ export default {
     box-sizing: border-box;
   }
 
+  body, html {
+    background-color: #1a1a1a;
+  }
+
   #app {
     padding: 30px;
     /* font-family: 'Avenir', Helvetica, Arial, sans-serif; */
@@ -38,6 +42,6 @@ export default {
     text-align: center;
     color: #fff;
     background-color: #1a1a1a;
-    height: 100vh;
+    /* height: 100vh; */
   }
 </style>

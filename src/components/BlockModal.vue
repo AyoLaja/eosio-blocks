@@ -30,9 +30,10 @@
         },
         methods: {
             closeModal() {
+                const html = document.querySelector('html')
+                html.style.overflowY = 'scroll'
                 this.globalState.modal.show = false
-                const modalContainer = document.querySelector('.modal-container')
-                modalContainer.removeEventListener('click', this.closeModal)
+                this.globalState.modal.details = {}
             }
         }
     }
