@@ -1,7 +1,8 @@
 export const store = {
     state: {
         modal: {
-            show: false
+            show: false,
+            details: null
         }
     }
 }

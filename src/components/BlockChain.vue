@@ -1,5 +1,5 @@
 <template>
-  <div v-if="blockChain !== null" class="blockchain">
+  <div v-if="blockChain !== null" class="block-chain">
     <h1>{{ blockChain.account_name }} blockchain</h1>
     <div class="blocks">
       <block-list :headBlockNo="blockChain.head_block_num"></block-list>

@@ -41,6 +41,7 @@
                 const html = document.querySelector('html')
                 html.style.overflowY = 'hidden'
                 this.globalState.modal.show = true
+                this.globalState.modal.details = this.block
             }
         }
     }

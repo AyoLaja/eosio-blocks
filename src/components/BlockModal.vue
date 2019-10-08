@@ -3,11 +3,14 @@
         <div class="modal" @click.stop>
             <div class="modal-header">
                 <div class="modal-title">
-                    <span>Block</span>
+                    <span>Block No: {{globalState.modal.details.block_num}}</span>
                 </div>
                 <div class="close" title="close">
                     <ion-icon name="ios-close" @click="closeModal"></ion-icon>
                 </div>
+            </div>
+            <div class="modal-body">
+                <code v-html="globalState.modal.details">{{}}</code>
             </div>
         </div>
     </div>
@@ -41,7 +44,7 @@
 </style>-->
 <style scoped>
     .modal {
-        height: 330px;
+        height: auto;
     }
 
     .modal-header {
@@ -50,11 +53,15 @@
     }
 
     .modal-body {
-        height: 65%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        z-index: 10;
+        max-height: 500px;
+        overflow-y: auto;
+    }
+
+    code {
+        white-space: pre-wrap;    
+        white-space: -moz-pre-wrap;  
+        white-space: -pre-wrap;      
+        white-space: -o-pre-wrap;   
+        word-wrap: break-word; 
     }
 </style>
