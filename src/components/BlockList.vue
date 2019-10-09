@@ -1,11 +1,11 @@
 <template>
     <div>
-        <ul v-if="blocksToDisplay.length > 0" class="blocks-list">
+        <ol v-if="blocksToDisplay.length > 0" class="blocks-list">
             <block-list-item v-for="block in blocksToDisplay" 
                 :key="block.id"
                 :block="block">
             </block-list-item>
-        </ul>
+        </ol>
         <div class="button-container">
             <button type="button" @click="getBlocks(lastBlockId)">Load more</button>
         </div>
@@ -80,6 +80,7 @@
     .blocks-list {
         margin-top: 20px;
         list-style: none;
+        counter-reset: a;
         display: grid;
         grid-gap: 20px;
         grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -90,20 +91,22 @@
     }
 
     .button-container button {
-        color: #51c715;
+        color: #fff;
+        font-size: 15px;
         font-family: 'Roboto Mono', monospace;
         background-color: inherit;
         border-radius: 5px;
-        border: 2px solid #51c715;
+        border: 2px solid #4246ff;
         padding: 7px 10px;
         font-weight: 700;
+        text-shadow: 1px 2px #4246ff;
         cursor: pointer;
         transition: all 0.3s ease;
     }
 
     .button-container button:hover {
         color: #fff;
-        background-color: #51c715;
+        background-color: #4246ff;
         transform: translateY(-3px)
     }
 </style>

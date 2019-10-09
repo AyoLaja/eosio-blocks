@@ -44,7 +44,7 @@
 
   .modal-title span {
     padding: 3px 15px 5px 15px;
-    background-color: #15c715;
+    background-color: #4246ff;
     border-radius: 15px;
     font-size: 13px;
     font-weight: bold;
@@ -63,7 +63,7 @@
 
   ion-icon {
     font-size: 30px;
-    color: #51c715;
+    color: #4246ff;
     cursor: pointer;
   }
 
