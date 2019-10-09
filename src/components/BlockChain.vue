@@ -1,7 +1,7 @@
 <template>
   <div v-if="!error" class="block-chain">
-    <h1>{{ blockChain.account_name }} blockchain</h1>
-    <div class="blocks">
+    <div v-if="blockChain !== null" class="blocks">
+      <h1>{{ blockChain.account_name }} blockchain</h1>
       <block-list :headBlockNo="blockChain.head_block_num"></block-list>
     </div>
   </div>
@@ -41,7 +41,6 @@
           console.log(error)
           this.error = true
         })
-        // console.log(this.blockChain)
       }
     }
   }
@@ -49,5 +48,9 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  
+  h1 {
+    font-family: 'Lalezar', cursive;
+    /* color: #4246ff; */
+    text-transform: uppercase;
+  }
 </style>

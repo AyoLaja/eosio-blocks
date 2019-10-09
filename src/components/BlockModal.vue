@@ -3,14 +3,15 @@
         <div class="modal" @click.stop>
             <div class="modal-header">
                 <div class="modal-title">
-                    <span>Block No: {{globalState.modal.details.block_num || globalState.modal.details.account_name}}</span>
+                    <span v-if="actionType === 'block'">Block No: {{modalBodyContent.block_num}}</span>
+                    <span v-else>Account: {{globalState.modal.details.account_name}}</span>
                 </div>
                 <div class="close" title="close">
                     <ion-icon name="ios-close" @click="closeModal"></ion-icon>
                 </div>
             </div>
             <div class="modal-body">
-                <code v-html="globalState.modal.details">{{}}</code>
+                <code v-html="modalBodyContent"></code>
             </div>
         </div>
     </div>
@@ -28,7 +29,15 @@
         },
         computed: {
             modalBodyContent() {
-                return this.globalState.modal.details
+                if (this.actionType === 'block') {
+                    return this.globalState.modal.details
+                }
+                else {
+                    return this.globalState.modal.details.abi.actions
+                }
+            },
+            actionType() {
+                return this.globalState.modal.actionType
             }
         },
         methods: {
@@ -36,6 +45,7 @@
                 const html = document.querySelector('html')
                 html.style.overflowY = 'scroll'
                 this.globalState.modal.show = false
+                this.globalState.modal.actionType = ''
                 this.globalState.modal.details = {}
             }
         }

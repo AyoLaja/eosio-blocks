@@ -2,7 +2,7 @@
     <li class="block-item" @click="openModal()">
         <div class="producer">
             <h2>{{block.producer}}</h2>
-            <span>{{block.timestamp}}</span>
+            <span>{{new Date(block.timestamp).toGMTString()}}</span>
         </div>
         <div class="block-details">
             <span>block no: {{block.block_num}}</span>
@@ -53,12 +53,12 @@
                 const html = document.querySelector('html')
                 html.style.overflowY = 'hidden'
                 this.globalState.modal.show = true
+                this.globalState.modal.actionType = actionType
                 this.globalState.modal.details = details
             },
             async getRicardianContract() {
                 this.ricardian = await rpc.get_abi('eosio')
-                console.log(this.ricardian)
-                this.openModal(this.ricardian.abi.actions, 'abi')
+                this.openModal(this.ricardian, 'abi')
             }
         }
     }
@@ -147,10 +147,10 @@
     }
     
     button {
-        color: #fff;
+        color: #4246ff;
         font-size: 12px;
         font-family: 'Roboto Mono', monospace;
-        background-color: #4246ff;
+        background-color: inherit;
         border-radius: 15px;
         border: 2px solid #4246ff;
         padding: 3px 10px 5px;

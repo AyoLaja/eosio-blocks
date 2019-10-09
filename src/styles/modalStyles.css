@@ -33,16 +33,17 @@
   }
 
   .modal-header .modal-title {
-    width: 50%;
+    width: 80%;
     text-align: left;
   }
 
   .modal-header .close {
-    width: 50%;
+    width: 20%;
     text-align: right;
   }
 
   .modal-title span {
+    display: inline-block;
     padding: 3px 15px 5px 15px;
     background-color: #4246ff;
     border-radius: 15px;
