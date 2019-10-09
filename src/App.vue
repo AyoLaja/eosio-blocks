@@ -44,4 +44,11 @@ export default {
     background-color: #1a1a1a;
     /* height: 100vh; */
   }
+
+  @media only screen and (min-width: 1317px) {
+    #app {
+      width: 1128px;
+      margin: auto;
+    }
+  }
 </style>
