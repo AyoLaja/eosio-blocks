@@ -19,9 +19,9 @@
             </li>
         </ul>
         <hr/>
-        <div class="button-container">
+        <div class="button-container" @click.stop>
             <button type="button" @click="getRicardianContract">
-                View ricardian contract
+                View ricardian actions
                 <ion-icon name="ios-arrow-forward"></ion-icon>
             </button>
         </div>
