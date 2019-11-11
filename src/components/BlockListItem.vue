@@ -1,5 +1,5 @@
 <template>
-    <li class="block-item" @click="openModal()">
+    <div class="block-item" @click="openModal()">
         <div class="producer">
             <h2>{{block.producer}}</h2>
             <span>{{new Date(block.timestamp).toGMTString()}}</span>
@@ -25,7 +25,7 @@
                 <ion-icon name="ios-arrow-forward"></ion-icon>
             </button>
         </div>
-    </li>
+    </div>
 </template>
 
 <script>

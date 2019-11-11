@@ -1,10 +1,12 @@
 <template>
     <div>
         <ol v-if="blocksToDisplay.length > 0" class="blocks-list">
-            <block-list-item v-for="block in blocksToDisplay" 
-                :key="block.id"
-                :block="block">
-            </block-list-item>
+            <transition-group tag="li" class="transition-group" name="slide-fade">
+                <block-list-item v-for="block in blocksToDisplay" 
+                    :key="block.id"
+                    :block="block">
+                </block-list-item>
+            </transition-group>
         </ol>
         <div class="button-container">
             <button type="button" @click="getMore">Load more</button>
@@ -64,6 +66,10 @@
         margin-top: 20px;
         list-style: none;
         counter-reset: a;
+        
+    }
+
+    .transition-group {
         display: grid;
         grid-gap: 20px;
         grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
