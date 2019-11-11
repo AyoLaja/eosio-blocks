@@ -2,6 +2,7 @@
   <div v-if="!error" class="block-chain">
     <div v-if="blockChain !== null" class="blocks">
       <h1>{{ blockChain.account_name }} blockchain</h1>
+      <p>Latest blocks on the eosio blockchain</p>
       <block-list :headBlockNo="blockChain.head_block_num"></block-list>
     </div>
   </div>
